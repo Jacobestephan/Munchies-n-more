@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Munchies N'More</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Munchies N'More" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <main class="contact-page">
+        <div class="container">
+            <h1 class="page-title">Let's Talk Munchies</h1>
+            
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <label>Name</label>
+                        <input type="text" placeholder="Your name" required>
+                        
+                        <label>Email</label>
+                        <input type="email" placeholder="you@email.com" required>
+                        
+                        <label>Message</label>
+                        <textarea placeholder="Hey, I'd love to order a..." rows="6" required></textarea>
+                        
+                        <button type="submit" class="btn btn-primary full-width">Send Message</button>
+                    </form>
+                    <p class="form-note">We'll get back to you within 24 hours!</p>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="info-block">
+                        <h3>📍 Location</h3>
+                        <p>414 McArthur Ave.<br>Ottawa, ON K1K 1G5<br>Vanier (C9J2+QQ)</p>
+                        <a href="https://maps.google.com/?q=414+McArthur+Ave,+Ottawa,+ON+K1K+1G5" target="_blank" class="map-link">Get Directions</a>
+                    </div>
+                    
+                    <div class="info-block">
+                        <h3>📞 Call the truck</h3>
+                        <a href="tel:6134256673" class="phone-big">(613) 425-6673</a>
+                    </div>
+                    
+                    <div class="info-block">
+                        <h3>🕒 Hours</h3>
+                        <p>Monday – Saturday: 11:00 AM – 7:00 PM<br>Sunday: Closed</p>
+                    </div>
+                    
+                    <div class="info-block">
+                        <h3>📸 Instagram</h3>
+                        <a href="https://instagram.com/munchies_nmore" target="_blank" class="ig-link">@MUNCHIES_NMORE</a>
+                        <p>Tag your munchies pics — we repost the best ones!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Munchies N'More" class="footer-logo-img">
+                    <p><small>Food truck vibes, brick & mortar taste</small></p>
+                </div>
+                <div>Food truck energy served daily in Ottawa</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

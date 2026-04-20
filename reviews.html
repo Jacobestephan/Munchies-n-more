@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews | Munchies N'More</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Munchies N'More" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reviews.html" class="active">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <main class="reviews-page">
+        <div class="container">
+            <div class="rating-header">
+                <h1>⭐⭐⭐⭐⭐ 4.9 out of 5</h1>
+                <p>Based on 189 Google reviews • Ottawa's favorite munchies spot</p>
+            </div>
+
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Best poutine in Ottawa hands down! The smoked meat one is insane. Fast service and super friendly staff."</p>
+                    <div class="review-author">— Sarah T., 2 days ago</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Classic burger combo was perfect. Crispy fries, juicy patty. My kids loved the chicken fingers platter too!"</p>
+                    <div class="review-author">— Mike P., 1 week ago</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Deep fried pickles and the Baconizer poutine = heaven. Food truck energy but with a real location. Highly recommend!"</p>
+                    <div class="review-author">— Jessica L., 3 weeks ago</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★☆</div>
+                    <p class="review-text">"Jumbo hot dog and curly fries hit the spot. Great prices and the place is always clean. Will be back for more munchies!"</p>
+                    <div class="review-author">— Ryan K., 1 month ago</div>
+                </div>
+            </div>
+
+            <div class="google-cta">
+                <p>See all 189 reviews on Google →</p>
+                <a href="https://google.com/search?q=Munchies+N%27More+Ottawa" target="_blank" class="btn btn-primary">View on Google Maps</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Munchies N'More" class="footer-logo-img">
+                    <p><small>Food truck vibes, brick & mortar taste</small></p>
+                </div>
+                <div>414 McArthur Ave, Ottawa, ON K1K 1G5</div>
+                <div>📞 (613) 425-6673</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
