@@ -48,10 +48,14 @@ body {
 }
 
 .logo-img {
-    height: 58px;
+    height: 52px;
     width: auto;
-    filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.3));
     animation: chase 2.5s infinite ease-in-out;
+}
+
+.footer-logo-img {
+    height: 48px;
+    width: auto;
 }
 
 .nav-links {
@@ -85,7 +89,8 @@ body {
 
 /* HERO */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://th.bing.com/th/id/OIP.db0YLpMoBGH693V7o-TaFAHaFj?w=243&h=182&c=7&r=0&o=5&dpr=1.1&pid=1.7') center/cover no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://scontent-yyz1-1.xx.fbcdn.net/v/t39.30808-6/224607607_108662754843283_6356012356001936074_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=Hily1A-DY00Q7kNvwGX9gMa&_nc_oc=Ado31XWeKQ5xQrmm469w1oWZVnrcQ9wt78j0Na_Q7cXQ7OEkXeenjGp-ZRlIbgMROV0&_nc_zt=23&_nc_ht=scontent-yyz1-1.xx&_nc_gid=3mA0Yol5MWk182fHnAKb9Q&_nc_ss=7b2a8&oh=00_Af0ovRWcn3cXExfHH-5WP58B2vM67mn-AFnBbSB4fbTnnA&oe=69F84F29') center top/contain no-repeat;
+    background-color: #1a1a1a;
     height: 85vh;
     min-height: 600px;
     display: flex;
@@ -654,4 +659,142 @@ footer a:hover {
     .rating-header h1 {
         font-size: 2.2rem;
     }
+}
+/* =============================================
+   COMPREHENSIVE MOBILE & TABLET RESPONSIVE
+   ============================================= */
+
+/* TABLET (768px and below) */
+@media (max-width: 768px) {
+
+    /* Navbar */
+    .nav-container {
+        padding: 0.75rem 1rem;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary);
+        flex-direction: column;
+        padding: 0.5rem 1rem 1rem;
+        display: none;
+        gap: 0;
+        z-index: 999;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .nav-links li:last-child { border-bottom: none; }
+    .nav-links a { display: block; padding: 0.75rem 0; font-size: 1.1rem; }
+    .nav-links.show { display: flex; }
+    .hamburger { display: block; }
+
+    /* Hero */
+    .hero { height: auto; min-height: 520px; padding: 6rem 0 4rem; }
+    .hero-overlay { padding: 0 1.25rem; }
+    .hero-title { font-size: 2.8rem; }
+    .hero-subtitle { font-size: 1.4rem; }
+    .hero-tagline { font-size: 1.1rem; }
+    .hero-buttons { flex-direction: column; gap: 0.75rem; }
+    .hero-buttons .btn { text-align: center; width: 100%; max-width: 320px; }
+    .trust-bar { flex-direction: column; gap: 0.5rem; font-size: 0.95rem; }
+    .badge { font-size: 0.95rem; }
+
+    /* About */
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-image { display: none; }
+
+    /* Featured cards */
+    .featured-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .food-card h3 { font-size: 1.1rem; }
+    .price { font-size: 1.1rem; }
+
+    /* Location teaser */
+    .location-grid { grid-template-columns: 1fr; gap: 1.5rem; text-align: left; }
+
+    /* Section titles */
+    .section-title { font-size: 2rem; margin: 2rem 0 1.5rem; }
+
+    /* Inner page containers */
+    .menu-page .container,
+    .reviews-page .container,
+    .contact-page .container {
+        padding: 1.75rem 1.25rem;
+        border-radius: 12px;
+        margin-top: 1rem;
+    }
+
+    /* Contact page */
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .phone-big { font-size: 1.6rem; }
+    .page-title { font-size: 2.2rem; }
+
+    /* Reviews */
+    .rating-header h1 { font-size: 2rem; }
+    .review-grid { grid-template-columns: 1fr; }
+
+    /* Footer */
+    .footer-grid { grid-template-columns: 1fr; gap: 1rem; text-align: center; }
+
+    /* Buttons */
+    .btn { padding: 14px 24px; font-size: 1.05rem; }
+}
+
+/* MOBILE (480px and below) */
+@media (max-width: 480px) {
+
+    /* Navbar logo text size */
+    .logo span { font-size: 1.1rem !important; }
+
+    /* Hero */
+    .hero { min-height: 480px; }
+    .hero-title { font-size: 2.2rem; }
+    .hero-subtitle { font-size: 1.2rem; }
+    .hero-tagline { font-size: 0.95rem; }
+
+    /* Featured — single column on phones */
+    .featured-grid { grid-template-columns: 1fr; }
+
+    /* Menu filter buttons */
+    .filter-bar { gap: 0.4rem; }
+    .filter-btn { font-size: 0.85rem; padding: 0.35rem 0.9rem; }
+
+    /* Menu items stack better */
+    .menu-grid { grid-template-columns: 1fr; }
+    .size-grid { grid-template-columns: 1fr; }
+    .menu-item { flex-wrap: wrap; gap: 0.5rem; }
+    .menu-item-price { min-width: unset; }
+
+    /* Reviews */
+    .rating-header h1 { font-size: 1.7rem; }
+    .review-text { font-size: 1rem; }
+    .stars { font-size: 1.4rem; }
+
+    /* Contact form */
+    .contact-form input,
+    .contact-form textarea { font-size: 1rem; padding: 12px; }
+    .phone-big { font-size: 1.4rem; }
+
+    /* Sections */
+    .section-title { font-size: 1.7rem; }
+    .menu-page .container,
+    .reviews-page .container,
+    .contact-page .container { padding: 1.25rem 0.85rem; }
+
+    /* Inner page padding */
+    .menu-page, .reviews-page, .contact-page { padding: 1.5rem 0 3rem; }
+
+    /* Footer */
+    footer { padding: 2rem 0 1rem; }
+    .footer-grid { gap: 0.75rem; }
+}
+
+/* VERY SMALL SCREENS (360px and below) */
+@media (max-width: 360px) {
+    .hero-title { font-size: 1.9rem; }
+    .btn { padding: 12px 18px; font-size: 0.95rem; }
+    .filter-btn { font-size: 0.78rem; padding: 0.3rem 0.7rem; }
 }
