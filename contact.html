@@ -5,14 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Munchies N'More</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="logo.png">
+    <link rel="icon" href="logo.svg">
+    <style>
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
-    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="logo.png" alt="Munchies N'More" class="logo-img">
+                <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:0.5rem;">
+                <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="22" cy="22" r="21" fill="#f5c518" stroke="#1a1a1a" stroke-width="2"/>
+                  <ellipse cx="22" cy="16" rx="12" ry="7" fill="#f5a623"/>
+                  <ellipse cx="22" cy="14" rx="12" ry="6" fill="#f7c35f"/>
+                  <rect x="10" y="20" width="24" height="4" rx="2" fill="#4caf50"/>
+                  <rect x="10" y="23" width="24" height="5" rx="2.5" fill="#7b3f00"/>
+                  <rect x="10" y="27" width="24" height="3" rx="1" fill="#f5c518"/>
+                  <ellipse cx="22" cy="31" rx="12" ry="5" fill="#f5a623"/>
+                </svg>
+                <span style="font-family: Arial Black, Arial, sans-serif; font-weight:900; font-size:1.3rem; color:white; line-height:1;">MUNCHIES<br><span style="color:#f5c518; font-size:0.85rem; letter-spacing:2px;">N'MORE</span></span>
+                </a>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -27,48 +45,69 @@
     <main class="contact-page">
         <div class="container">
             <h1 class="page-title">Let's Talk Munchies</h1>
-            
-            <div class="contact-grid">
-                <div class="contact-form">
-                    <form action="#" method="POST">
-                        <label>Name</label>
-                        <input type="text" placeholder="Your name" required>
-                        
-                        <label>Email</label>
-                        <input type="email" placeholder="you@email.com" required>
-                        
-                        <label>Message</label>
-                        <textarea placeholder="Hey, I'd love to order a..." rows="6" required></textarea>
-                        
-                        <button type="submit" class="btn btn-primary full-width">Send Message</button>
-                    </form>
-                    <p class="form-note">We'll get back to you within 24 hours!</p>
+            <p style="text-align:center; color:#666; margin-bottom:2.5rem; font-size:1.1rem;">Give us a call — we're happy to take your order or answer any questions!</p>
+
+            <!-- BIG CALL BUTTON -->
+            <div style="text-align:center; margin-bottom:3rem;">
+                <a href="tel:6134256673" style="
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    background: var(--primary);
+                    color: white;
+                    text-decoration: none;
+                    font-size: 2.2rem;
+                    font-weight: 900;
+                    padding: 1.25rem 3rem;
+                    border-radius: 999px;
+                    box-shadow: 0 8px 25px rgba(231,76,60,0.4);
+                    transition: transform 0.2s, box-shadow 0.2s;
+                ">
+                    📞 (613) 425-6673
+                </a>
+                <p style="margin-top:1rem; color:#888; font-size:0.95rem;">Tap to call on mobile</p>
+            </div>
+
+            <!-- INFO GRID -->
+            <div class="contact-info-grid">
+                <div class="info-block">
+                    <h3>📍 Location</h3>
+                    <p>414 McArthur Ave.<br>Ottawa, ON K1K 1G5<br>Vanier (C9J2+QQ)</p>
+                    <a href="https://maps.google.com/?q=414+McArthur+Ave,+Ottawa,+ON+K1K+1G5" target="_blank" class="map-link">Get Directions →</a>
                 </div>
-                
-                <div class="contact-info">
-                    <div class="info-block">
-                        <h3>📍 Location</h3>
-                        <p>414 McArthur Ave.<br>Ottawa, ON K1K 1G5<br>Vanier (C9J2+QQ)</p>
-                        <a href="https://maps.google.com/?q=414+McArthur+Ave,+Ottawa,+ON+K1K+1G5" target="_blank" class="map-link">Get Directions</a>
-                    </div>
-                    
-                    <div class="info-block">
-                        <h3>📞 Call the truck</h3>
-                        <a href="tel:6134256673" class="phone-big">(613) 425-6673</a>
-                    </div>
-                    
-                    <div class="info-block">
-                        <h3>🕒 Hours</h3>
-                        <p>Monday – Saturday: 11:00 AM – 7:00 PM<br>Sunday: Closed</p>
-                    </div>
-                    
-                    <div class="info-block">
-                        <h3>📸 Instagram</h3>
-                        <a href="https://instagram.com/munchies_nmore" target="_blank" class="ig-link">@MUNCHIES_NMORE</a>
-                        <p>Tag your munchies pics — we repost the best ones!</p>
-                    </div>
+
+                <div class="info-block">
+                    <h3>🕒 Hours</h3>
+                    <p>Monday – Saturday<br><strong>11:00 AM – 7:00 PM</strong></p>
+                    <p style="margin-top:0.5rem; color:#e74c3c; font-weight:600;">Sunday: Closed</p>
+                </div>
+
+                <div class="info-block">
+                    <h3>📸 Instagram</h3>
+                    <a href="https://instagram.com/munchies_nmore" target="_blank" class="ig-link">@MUNCHIES_NMORE</a>
+                    <p style="margin-top:0.5rem;">Tag your munchies pics — we repost the best ones!</p>
+                </div>
+
+                <div class="info-block">
+                    <h3>📘 Facebook</h3>
+                    <a href="https://www.facebook.com/munchiesnmoreottawa/" target="_blank" class="ig-link">Munchies N'More Ottawa</a>
+                    <p style="margin-top:0.5rem;">Follow us for daily specials and updates!</p>
                 </div>
             </div>
+
+            <!-- GOOGLE MAP EMBED -->
+            <div style="margin-top:2.5rem; border-radius:16px; overflow:hidden; box-shadow:0 8px 25px rgba(0,0,0,0.12);">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.123!2d-75.6462!3d45.4355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce04b3f4a0a1a1%3A0x0!2s414+McArthur+Ave%2C+Ottawa%2C+ON+K1K+1G5!5e0!3m2!1sen!2sca!4v1"
+                    width="100%"
+                    height="340"
+                    style="border:0; display:block;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
         </div>
     </main>
 
@@ -76,10 +115,26 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="Munchies N'More" class="footer-logo-img">
-                    <p><small>Food truck vibes, brick & mortar taste</small></p>
+                <svg width="36" height="36" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="22" cy="22" r="21" fill="#f5c518" stroke="#1a1a1a" stroke-width="2"/>
+                  <ellipse cx="22" cy="16" rx="12" ry="7" fill="#f5a623"/>
+                  <ellipse cx="22" cy="14" rx="12" ry="6" fill="#f7c35f"/>
+                  <rect x="10" y="20" width="24" height="4" rx="2" fill="#4caf50"/>
+                  <rect x="10" y="23" width="24" height="5" rx="2.5" fill="#7b3f00"/>
+                  <rect x="10" y="27" width="24" height="3" rx="1" fill="#f5c518"/>
+                  <ellipse cx="22" cy="31" rx="12" ry="5" fill="#f5a623"/>
+                </svg>
+                <span style="font-family: Arial Black, Arial, sans-serif; font-weight:900; font-size:1rem; color:white;">MUNCHIES <span style="color:#f5c518;">N'MORE</span></span>
+                <p><small>Food truck vibes, brick &amp; mortar taste</small></p>
                 </div>
-                <div>Food truck energy served daily in Ottawa</div>
+                <div>
+                    <strong>Menu • Reviews • Contact</strong>
+                    <p>© 2026 Munchies N'More • Ottawa, ON</p>
+                </div>
+                <div>
+                    <p><strong>Phone:</strong> <a href="tel:6134256673">(613) 425-6673</a></p>
+                    <p><strong>Address:</strong> 414 McArthur Ave, Ottawa ON K1K 1G5</p>
+                </div>
             </div>
         </div>
     </footer>
