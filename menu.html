@@ -62,6 +62,18 @@
       margin-bottom: 1.5rem;
       color: var(--dark);
     }
+
+    /* Section image — full natural height, no cropping */
+    .menu-section-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      border: 3px solid #f5c518;
+    }
+
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -100,7 +112,6 @@
       font-weight: 500;
     }
 
-    /* Size grid for poutine/fries */
     .size-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -124,7 +135,6 @@
     .size-prices .label { font-size: 0.7rem; color: #999; font-weight: 500; }
     .size-prices .val { color: var(--primary); font-size: 1rem; }
 
-    /* Extras note */
     .extras-note {
       background: #fff8e1;
       border: 2px dashed var(--accent);
@@ -136,7 +146,6 @@
     }
     .extras-note strong { color: var(--dark); }
 
-    /* Combo note */
     .combo-note {
       background: #fff3f3;
       border: 2px dashed var(--primary);
@@ -177,36 +186,23 @@
 </head>
 <body>
 
-<nav class="navbar">
-  <div class="nav-container">
-    <div class="logo">
-                <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:0.5rem;">
-                <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="22" cy="22" r="21" fill="#f5c518" stroke="#1a1a1a" stroke-width="2"/>
-                  <!-- bun top -->
-                  <ellipse cx="22" cy="16" rx="12" ry="7" fill="#f5a623"/>
-                  <ellipse cx="22" cy="14" rx="12" ry="6" fill="#f7c35f"/>
-                  <!-- lettuce -->
-                  <rect x="10" y="20" width="24" height="4" rx="2" fill="#4caf50"/>
-                  <!-- patty -->
-                  <rect x="10" y="23" width="24" height="5" rx="2.5" fill="#7b3f00"/>
-                  <!-- cheese -->
-                  <rect x="10" y="27" width="24" height="3" rx="1" fill="#f5c518"/>
-                  <!-- bun bottom -->
-                  <ellipse cx="22" cy="31" rx="12" ry="5" fill="#f5a623"/>
-                </svg>
-                <span style="font-family: Arial Black, Arial, sans-serif; font-weight:900; font-size:1.3rem; color:white; line-height:1;">MUNCHIES<br><span style="color:#f5c518; font-size:0.85rem; letter-spacing:2px;">N'MORE</span></span>
-            </a>
-            </div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="menu.html" class="active">Menu</a></li>
-      <li><a href="reviews.html">Reviews</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <button class="hamburger" aria-label="Toggle menu">☰</button>
-  </div>
-</nav>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:0.6rem;">
+          <img src="https://scontent-yyz1-1.xx.fbcdn.net/v/t39.30808-6/224607607_108662754843283_6356012356001936074_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=utRl8--XpD4Q7kNvwF0H474&_nc_oc=Adrr51OPSTjb4a1eCCOS1hjnYd8Ft-JaPYgh7UfqGRvW7ALfFsPYzkct6wA8mWlSCJM&_nc_zt=23&_nc_ht=scontent-yyz1-1.xx&_nc_gid=I9XsU6w-t4xVCJtu1SG1Ow&_nc_ss=7b2a8&oh=00_Af27Eh2ZL6cRy-Em3QiBVd-zZ75hFidklIJXATUf0zsYkg&oe=69F93029" alt="Munchies N'More Logo" style="height:52px; width:52px; border-radius:50%; object-fit:cover; border:2px solid #f5c518; box-shadow:0 2px 8px rgba(0,0,0,0.3);">
+          <span style="font-family: Arial Black, Arial, sans-serif; font-weight:900; font-size:1.3rem; color:white; line-height:1.1;">MUNCHIES<br><span style="color:#f5c518; font-size:0.85rem; letter-spacing:2px;">N'MORE</span></span>
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle menu">☰</button>
+    </div>
+  </nav>
 
 <main class="menu-page">
 
@@ -233,8 +229,7 @@
     <!-- BURGERS -->
     <div class="menu-category" data-cat="burgers">
       <div class="menu-cat-title">🍔 Burgers</div>
-      <img src="https://scontent-ord5-1.xx.fbcdn.net/v/t51.82787-15/572260443_18066297539596757_4751987680561321882_n.jpg?stp=dst-jpegr_tt6_s1080x1080&_nc_cat=108&ccb=1-7&_nc_sid=13d280&_nc_ohc=A02cHTOWV4MQ7kNvwFwPPnB&_nc_oc=Ado211Xv7IbYBYT-vMf0MHHYAPhvr-BSW32NygRucKsrajBENj8z7zIRuMXW1MAfx5s&_nc_zt=23&se=-1&_nc_ht=scontent-ord5-1.xx&_nc_gid=IoDeYsGC3CtMykEV0xsRKg&_nc_ss=7b2a8&oh=00_Af3rHFZbd_Y33rHV3376QCGJ1nC7J1w14Gh5nbuuD4J3dg&oe=69F878F2" alt="burgers photo" style="width:100%; height:320px; object-fit:cover; border-radius:16px; margin-bottom:1.5rem; box-shadow:0 8px 24px rgba(0,0,0,0.18); display:block; border:3px solid #f5c518;" onerror="this.style.display='none'">
-      
+      <img class="menu-section-img" src="https://scontent-yyz1-1.xx.fbcdn.net/v/t51.75761-15/463467100_18022286018596757_5896728639459184246_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=13d280&_nc_ohc=dp9E_g6JKzAQ7kNvwFAmOjo&_nc_oc=AdqDc9Xvx4UdVes8R5cqz0e2Y5rYOF9bDTr4a9mXUUSLBWbgMgwpI2dWiQHKJFneQKQ&_nc_zt=23&_nc_ht=scontent-yyz1-1.xx&_nc_gid=peQ48VMMDH3UcMvrAcp8Jw&_nc_ss=7b2a8&oh=00_Af2qISI0bnHG7C9NUwrU0kAqr41Avh2YRTYlOpZOpZHJtQ&oe=69F95DEA" alt="Burgers" onerror="this.style.display='none'">
       <div class="menu-grid">
 
         <div class="menu-item">
@@ -404,8 +399,7 @@
     <!-- POUTINE -->
     <div class="menu-category" data-cat="poutine">
       <div class="menu-cat-title">🧀 Poutine</div>
-      <img src="https://scontent-ord5-3.xx.fbcdn.net/v/t51.82787-15/561622971_18063819986596757_8156604215064632273_n.jpg?stp=dst-jpegr_tt6_s1080x1080&_nc_cat=109&ccb=1-7&_nc_sid=13d280&_nc_ohc=Rh8XHhpuoNcQ7kNvwG7rO-m&_nc_oc=AdpSaGhn3vbgwZGLax6Rg-ROtwHurJeLKWwGzdy5mrNkGgfgU7I8IBZjf4gsRTL0z90&_nc_zt=23&se=-1&_nc_ht=scontent-ord5-3.xx&_nc_gid=Or8IzTcC9uTNWcSw0a8kpA&_nc_ss=7b2a8&oh=00_Af3FzHoVQpfqaP38-jH_rUq0mBaXjqOKTFI-_qST31xk0Q&oe=69F86919" alt="poutine photo" style="width:100%; height:320px; object-fit:cover; border-radius:16px; margin-bottom:1.5rem; box-shadow:0 8px 24px rgba(0,0,0,0.18); display:block; border:3px solid #f5c518;" onerror="this.style.display='none'">
-      
+      <img class="menu-section-img" src="https://scontent-yyz1-1.xx.fbcdn.net/v/t51.82787-15/561622971_18063819986596757_8156604215064632273_n.jpg?stp=dst-jpegr_tt6&_nc_cat=109&ccb=1-7&_nc_sid=13d280&_nc_ohc=Rh8XHhpuoNcQ7kNvwG7rO-m&_nc_oc=AdpSaGhn3vbgwZGLax6Rg-ROtwHurJeLKWwGzdy5mrNkGgfgU7I8IBZjf4gsRTL0z90&_nc_zt=23&se=-1&_nc_ht=scontent-yyz1-1.xx&_nc_gid=nPN7vMpMTIn_1JZOA7Pw-Q&_nc_ss=7b2a8&oh=00_Af1_NH4mlV6vRxOsitG1279VSQ89TwIGsmwcpr8Rr04cZg&oe=69F94A19" alt="Poutine" onerror="this.style.display='none'">
       <div class="size-grid">
 
         <div class="size-item">
@@ -481,8 +475,7 @@
     <!-- HAND CUT FRIES -->
     <div class="menu-category" data-cat="fries">
       <div class="menu-cat-title">🍟 Hand Cut</div>
-      <img src="https://scontent-ord5-3.xx.fbcdn.net/v/t51.82787-15/672946757_18086122808596757_7323909341949747848_n.jpg?stp=dst-jpegr_tt6_s1080x1080&_nc_cat=109&ccb=1-7&_nc_sid=13d280&_nc_ohc=zPsstjECFKwQ7kNvwFZq2J2&_nc_oc=AdoMlS91auQFSHWS5nrcw2WLGqlveL7eeMRq3Ngf8lzzHOlYvv0bnBlI8kkp3uy8mGw&_nc_zt=23&se=-1&_nc_ht=scontent-ord5-3.xx&_nc_gid=S3IztNbozggN5YegtOmwcg&_nc_ss=7b2a8&oh=00_Af0O909Ak81DV8CfKVnH7p_cUdPftjwy6bnwlzUPZUAp-g&oe=69F86264" alt="fries photo" style="width:100%; height:320px; object-fit:cover; border-radius:16px; margin-bottom:1.5rem; box-shadow:0 8px 24px rgba(0,0,0,0.18); display:block; border:3px solid #f5c518;" onerror="this.style.display='none'">
-      
+      <img class="menu-section-img" src="https://scontent-yyz1-1.xx.fbcdn.net/v/t51.82787-15/672946757_18086122808596757_7323909341949747848_n.jpg?stp=dst-jpegr_tt6&_nc_cat=109&ccb=1-7&_nc_sid=13d280&_nc_ohc=AO7ii4c8eQ4Q7kNvwGNfpfz&_nc_oc=Ado9HaA3-isOZ_FpKXXfZO4dEJ69wBwxZzMWOxvpjqDcbdpa6z-Da6I9Ph7A2lkIuqA&_nc_zt=23&se=-1&_nc_ht=scontent-yyz1-1.xx&_nc_gid=guDIN_rq-qBkvajxZrYDGQ&_nc_ss=7b2a8&oh=00_Af0y5Izr_H43NnfjV1xQeBWXUmUDbGKNuF-GTuewYG0Wpg&oe=69F94364" alt="Hand Cut Fries" onerror="this.style.display='none'">
       <div class="size-grid">
 
         <div class="size-item">
@@ -526,8 +519,7 @@
     <!-- HOT DOGS -->
     <div class="menu-category" data-cat="hotdogs">
       <div class="menu-cat-title">🌭 Hot Dogs</div>
-      <img src="https://scontent-yyz1-1.xx.fbcdn.net/v/t51.82787-15/548690697_18060505460596757_2810696280749552583_n.jpg?stp=dst-jpegr_tt6_s1080x1080&_nc_cat=108&ccb=1-7&_nc_sid=13d280&_nc_ohc=LtBHh0FxffUQ7kNvwGBSgV-&_nc_oc=AdrXotK4Qs2DxGCgfGCeav5OPq89_pCDTU1jtaQq-b-uBrlPhZoaI03kUHBD5NEfHys&_nc_zt=23&se=-1&_nc_ht=scontent-yyz1-1.xx&_nc_gid=z1uzVJhQ7AxxVd9dcdNXzg&_nc_ss=7b2a8&oh=00_Af3mAO8rB7k3NGReh3AtgQgxquc6s25LWEgh0h09QSOtjw&oe=69F87B47" alt="hotdogs photo" style="width:100%; height:320px; object-fit:cover; border-radius:16px; margin-bottom:1.5rem; box-shadow:0 8px 24px rgba(0,0,0,0.18); display:block; border:3px solid #f5c518;" onerror="this.style.display='none'">
-      
+      <img class="menu-section-img" src="https://scontent-yyz1-1.xx.fbcdn.net/v/t51.82787-15/557155289_18062631197596757_3385379630848376777_n.jpg?stp=dst-jpegr_tt6&_nc_cat=103&ccb=1-7&_nc_sid=13d280&_nc_ohc=eoX7fuUVTzUQ7kNvwH2V8YI&_nc_oc=Adr_jvi00rX8uhGw_Z9dMFLkzEednas3ITOu2kyR7PXeaRO1U7mnIhh-S8WvpA0KRNk&_nc_zt=23&se=-1&_nc_ht=scontent-yyz1-1.xx&_nc_gid=I-bp6r8_DyJVR74LxIoSsw&_nc_ss=7b2a8&oh=00_Af2pwqBXGoeYkk3PG41_XGke5CuQX-sC9BVaT_ybr96gHQ&oe=69F9660E" alt="Hot Dogs" onerror="this.style.display='none'">
       <div class="menu-grid">
 
         <div class="menu-item">
@@ -577,8 +569,7 @@
     <!-- N'MORE -->
     <div class="menu-category" data-cat="nmore">
       <div class="menu-cat-title">⭐ N'More</div>
-      <img src="https://scontent-yyz1-1.xx.fbcdn.net/v/t51.75761-15/498292859_18046844372596757_8328518180964248955_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=13d280&_nc_ohc=c8XFvkP99V4Q7kNvwEUlmEX&_nc_oc=Adp6Cp031zVfdow0QvXLtnnrR6qojZ3t5Fg0N9mj6G2eMFztPXbT-axl7X2Ey126CRs&_nc_zt=23&_nc_ht=scontent-yyz1-1.xx&_nc_gid=kpxJNDSvW3OUmTLO2GR6AA&_nc_ss=7b2a8&oh=00_Af0MloaQ5dii-qTOSPdAKvfMJkUzniFbSBp4CZQkBwwNfQ&oe=69F85318" alt="nmore photo" style="width:100%; height:320px; object-fit:cover; border-radius:16px; margin-bottom:1.5rem; box-shadow:0 8px 24px rgba(0,0,0,0.18); display:block; border:3px solid #f5c518;" onerror="this.style.display='none'">
-      
+      <img class="menu-section-img" src="https://scontent-yyz1-1.xx.fbcdn.net/v/t51.75761-15/498292859_18046844372596757_8328518180964248955_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=13d280&_nc_ohc=c8XFvkP99V4Q7kNvwEUlmEX&_nc_oc=Adp6Cp031zVfdow0QvXLtnnrR6qojZ3t5Fg0N9mj6G2eMFztPXbT-axl7X2Ey126CRs&_nc_zt=23&_nc_ht=scontent-yyz1-1.xx&_nc_gid=kpxJNDSvW3OUmTLO2GR6AA&_nc_ss=7b2a8&oh=00_Af0MloaQ5dii-qTOSPdAKvfMJkUzniFbSBp4CZQkBwwNfQ&oe=69F85318" alt="N'More" onerror="this.style.display='none'">
       <div class="menu-grid">
 
         <div class="menu-item">
@@ -628,8 +619,7 @@
     <!-- KIDS -->
     <div class="menu-category" data-cat="kids">
       <div class="menu-cat-title">👶 Kids Menu</div>
-      <img src="https://scontent-yyz1-1.xx.fbcdn.net/v/t39.30808-6/468096613_18026823476596757_8766332591225820915_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=13d280&_nc_ohc=3eAm7azte9kQ7kNvwETCWlR&_nc_oc=AdqA7goe-7Xn3e3FMOW2ZYh6u9jzJ7nLl0kjQA8M41pqhdKPYTOe9Lwy4rYflkOSHtQ&_nc_zt=23&_nc_ht=scontent-yyz1-1.xx&_nc_gid=0VNRlw7YR3N2Uot88lfhCg&_nc_ss=7b2a8&oh=00_Af12T2z9s-vqgdV3x9XStRXQel24bqvTpgnvMsClOMkBQQ&oe=69F86605" alt="kids photo" style="width:100%; height:320px; object-fit:cover; border-radius:16px; margin-bottom:1.5rem; box-shadow:0 8px 24px rgba(0,0,0,0.18); display:block; border:3px solid #f5c518;" onerror="this.style.display='none'">
-      
+      <img class="menu-section-img" src="https://scontent-yyz1-1.xx.fbcdn.net/v/t39.30808-6/468096613_18026823476596757_8766332591225820915_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=13d280&_nc_ohc=3eAm7azte9kQ7kNvwETCWlR&_nc_oc=AdqA7goe-7Xn3e3FMOW2ZYh6u9jzJ7nLl0kjQA8M41pqhdKPYTOe9Lwy4rYflkOSHtQ&_nc_zt=23&_nc_ht=scontent-yyz1-1.xx&_nc_gid=0VNRlw7YR3N2Uot88lfhCg&_nc_ss=7b2a8&oh=00_Af12T2z9s-vqgdV3x9XStRXQel24bqvTpgnvMsClOMkBQQ&oe=69F86605" alt="Kids Menu" onerror="this.style.display='none'">
       <div class="menu-grid">
 
         <div class="menu-item">
@@ -651,8 +641,7 @@
     <!-- DESSERTS -->
     <div class="menu-category" data-cat="dessert">
       <div class="menu-cat-title">🍩 Desserts</div>
-      <img src="https://scontent-ord5-3.xx.fbcdn.net/v/t51.82787-15/515115032_18051883556596757_3600359887508900049_n.jpg?stp=dst-jpegr_tt6_s1080x1080&_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=n4I9kSqE4TcQ7kNvwFQFRLA&_nc_oc=AdpEvR9yApEWT3ceXXmv8KLugjNmdXl8_CTD2XiNNcZVKZBeZTbsrXuDvck5CKflZtA&_nc_zt=23&se=-1&_nc_ht=scontent-ord5-3.xx&_nc_gid=m8NfuLUE-8dll2DNNMYNbg&_nc_ss=7b2a8&oh=00_Af0z7jQ32lye_Vvd3bRZjFL67oZmxq7DL0wrBpwxeifmmA&oe=69F86311" alt="dessert photo" style="width:100%; height:320px; object-fit:cover; border-radius:16px; margin-bottom:1.5rem; box-shadow:0 8px 24px rgba(0,0,0,0.18); display:block; border:3px solid #f5c518;" onerror="this.style.display='none'">
-      
+      <img class="menu-section-img" src="https://scontent-ord5-3.xx.fbcdn.net/v/t51.82787-15/515115032_18051883556596757_3600359887508900049_n.jpg?stp=dst-jpegr_tt6_s1080x1080&_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=n4I9kSqE4TcQ7kNvwFQFRLA&_nc_oc=AdpEvR9yApEWT3ceXXmv8KLugjNmdXl8_CTD2XiNNcZVKZBeZTbsrXuDvck5CKflZtA&_nc_zt=23&se=-1&_nc_ht=scontent-ord5-3.xx&_nc_gid=m8NfuLUE-8dll2DNNMYNbg&_nc_ss=7b2a8&oh=00_Af0z7jQ32lye_Vvd3bRZjFL67oZmxq7DL0wrBpwxeifmmA&oe=69F86311" alt="Desserts" onerror="this.style.display='none'">
       <div class="menu-grid">
 
         <div class="menu-item">
@@ -674,8 +663,7 @@
     <!-- DRINKS -->
     <div class="menu-category" data-cat="drinks">
       <div class="menu-cat-title">🥤 Drinks</div>
-      <img src="https://th.bing.com/th/id/OIP.93ByFRPNFuhTTcrtooIw3AHaEK?w=1080&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="drinks photo" style="width:100%; height:320px; object-fit:cover; border-radius:16px; margin-bottom:1.5rem; box-shadow:0 8px 24px rgba(0,0,0,0.18); display:block; border:3px solid #f5c518;" onerror="this.style.display='none'">
-      
+      <img class="menu-section-img" src="https://th.bing.com/th/id/OIP.93ByFRPNFuhTTcrtooIw3AHaEK?w=1080&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Drinks" onerror="this.style.display='none'">
       <div class="menu-grid">
 
         <div class="menu-item">
@@ -714,31 +702,23 @@
 </main>
 
 <footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-logo">
-                <svg width="36" height="36" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="22" cy="22" r="21" fill="#f5c518" stroke="#1a1a1a" stroke-width="2"/>
-                  <ellipse cx="22" cy="16" rx="12" ry="7" fill="#f5a623"/>
-                  <ellipse cx="22" cy="14" rx="12" ry="6" fill="#f7c35f"/>
-                  <rect x="10" y="20" width="24" height="4" rx="2" fill="#4caf50"/>
-                  <rect x="10" y="23" width="24" height="5" rx="2.5" fill="#7b3f00"/>
-                  <rect x="10" y="27" width="24" height="3" rx="1" fill="#f5c518"/>
-                  <ellipse cx="22" cy="31" rx="12" ry="5" fill="#f5a623"/>
-                </svg>
-                <span style="font-family: Arial Black, Arial, sans-serif; font-weight:900; font-size:1rem; color:white;">MUNCHIES <span style="color:#f5c518;">N'MORE</span></span>
-                <p><small>Food truck vibes, brick &amp; mortar taste</small></p>
-            </div>
-            <div>
-                <strong>Menu • Reviews • Contact</strong>
-                <p>© 2026 Munchies N'More • Ottawa, ON</p>
-            </div>
-            <div>
-                <p><strong>Phone:</strong> <a href="tel:6134256673">(613) 425-6673</a></p>
-                <p><strong>Address:</strong> 414 McArthur Ave, Ottawa ON K1K 1G5</p>
-            </div>
-        </div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo">
+        <img src="https://scontent-yyz1-1.xx.fbcdn.net/v/t39.30808-6/224607607_108662754843283_6356012356001936074_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=utRl8--XpD4Q7kNvwF0H474&_nc_oc=Adrr51OPSTjb4a1eCCOS1hjnYd8Ft-JaPYgh7UfqGRvW7ALfFsPYzkct6wA8mWlSCJM&_nc_zt=23&_nc_ht=scontent-yyz1-1.xx&_nc_gid=I9XsU6w-t4xVCJtu1SG1Ow&_nc_ss=7b2a8&oh=00_Af27Eh2ZL6cRy-Em3QiBVd-zZ75hFidklIJXATUf0zsYkg&oe=69F93029" alt="Munchies N'More Logo" style="height:48px; width:48px; border-radius:50%; object-fit:cover; border:2px solid #f5c518; margin-bottom:6px;">
+        <span style="font-family: Arial Black, Arial, sans-serif; font-weight:900; font-size:1rem; color:white; display:block;">MUNCHIES <span style="color:#f5c518;">N'MORE</span></span>
+        <p><small>Food truck vibes, brick &amp; mortar taste</small></p>
+      </div>
+      <div>
+        <strong>Menu • Reviews • Contact</strong>
+        <p>© 2026 Munchies N'More • Ottawa, ON</p>
+      </div>
+      <div>
+        <p><strong>Phone:</strong> <a href="tel:6134256673">(613) 425-6673</a></p>
+        <p><strong>Address:</strong> 414 McArthur Ave, Ottawa ON K1K 1G5</p>
+      </div>
     </div>
+  </div>
 </footer>
 
 <button id="scrollTop" aria-label="Back to top">↑</button>
