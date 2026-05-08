@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu | Munchies N'More Ottawa</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="logo.svg">
+  <style>
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-bottom: 2.5rem; }
+    .filter-btn {
+      font-size: 1rem;
+      padding: 0.45rem 1.25rem;
+      border: 3px solid var(--dark);
+      border-radius: 999px;
+      background: white;
+      color: var(--dark);
+      cursor: pointer;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.12);
+      transition: background 0.18s, color 0.18s, transform 0.15s;
+    }
+    .filter-btn:hover { transform: translateY(-2px); }
+    .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    .menu-hero {
+      background: var(--dark);
+      color: white;
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      border-bottom: 4px solid var(--accent);
+      position: relative;
+      overflow: hidden;
+    }
+    .menu-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg, transparent, transparent 20px,
+        rgba(241,196,15,0.06) 20px, rgba(241,196,15,0.06) 40px
+      );
+    }
+    .menu-hero h1 { font-size: clamp(2.2rem,6vw,3.8rem); color: var(--accent); text-shadow: 3px 3px 0 var(--primary); position: relative; margin-bottom: 0.5rem; }
+    .menu-hero p { position: relative; opacity: 0.85; margin-top: 0.5rem; font-size: 1.1rem; }
+
+    .menu-page { padding: 3rem 0 5rem; }
+    .menu-page .container {
+      background: white;
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+
+    .menu-category { margin-bottom: 3rem; }
+    .menu-cat-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      border-bottom: 4px solid var(--primary);
+      padding-bottom: 12px;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+    }
+
+    /* Section image — full natural height, no cropping */
+    .menu-section-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      border: 3px solid #f5c518;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 0.75rem;
+    }
+    .menu-item {
+      background: #f9f9f9;
+      padding: 0.9rem 1.2rem;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      gap: 1rem;
+    }
+    .menu-item-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: 3px; }
+    .menu-item-info p { font-size: 0.88rem; color: #666; line-height: 1.4; }
+    .menu-item-price {
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 1rem;
+      white-space: nowrap;
+      text-align: right;
+      min-width: 80px;
+    }
+    .menu-item-price .combo-price {
+      display: block;
+      font-size: 0.78rem;
+      color: #888;
+      font-weight: 600;
+    }
+    .menu-item-price .combo-label {
+      display: block;
+      font-size: 0.7rem;
+      color: #aaa;
+      font-weight: 500;
+    }
+
+    .size-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.75rem;
+    }
+    .size-item {
+      background: #f9f9f9;
+      padding: 0.9rem 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .size-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 3px; }
+    .size-item p { font-size: 0.88rem; color: #666; margin-bottom: 0.5rem; }
+    .size-prices {
+      display: flex;
+      gap: 1.5rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .size-prices span { display: flex; flex-direction: column; align-items: center; }
+    .size-prices .label { font-size: 0.7rem; color: #999; font-weight: 500; }
+    .size-prices .val { color: var(--primary); font-size: 1rem; }
+
+    .extras-note {
+      background: #fff8e1;
+      border: 2px dashed var(--accent);
+      border-radius: 10px;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      color: #555;
+    }
+    .extras-note strong { color: var(--dark); }
+
+    .combo-note {
+      background: #fff3f3;
+      border: 2px dashed var(--primary);
+      border-radius: 10px;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.88rem;
+      margin-top: 1rem;
+      color: #555;
+    }
+
+    .badge-veg { background: #2ecc71; color: white; font-size: 0.68rem; padding: 2px 6px; border-radius: 4px; font-weight: 700; vertical-align: middle; }
+
+    #scrollTop {
+      position: fixed; bottom: 2rem; right: 2rem;
+      background: var(--primary); color: white;
+      border: none; border-radius: 50%;
+      width: 48px; height: 48px; font-size: 1.4rem;
+      cursor: pointer; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 999;
+    }
+    #scrollTop.visible { display: block; }
+
+    .tax-note {
+      text-align: center;
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .menu-page .container { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:0.6rem;">
+          <img src="https://scontent-yyz1-1.xx.fbcdn.net/v/t39.30808-6/224607607_108662754843283_6356012356001936074_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=utRl8--XpD4Q7kNvwF0H474&_nc_oc=Adrr51OPSTjb4a1eCCOS1hjnYd8Ft-JaPYgh7UfqGRvW7ALfFsPYzkct6wA8mWlSCJM&_nc_zt=23&_nc_ht=scontent-yyz1-1.xx&_nc_gid=I9XsU6w-t4xVCJtu1SG1Ow&_nc_ss=7b2a8&oh=00_Af27Eh2ZL6cRy-Em3QiBVd-zZ75hFidklIJXATUf0zsYkg&oe=69F93029" alt="Munchies N'More Logo" style="height:52px; width:52px; border-radius:50%; object-fit:cover; border:2px solid #f5c518; box-shadow:0 2px 8px rgba(0,0,0,0.3);">
+          <span style="font-family: Arial Black, Arial, sans-serif; font-weight:900; font-size:1.3rem; color:white; line-height:1.1;">MUNCHIES<br><span style="color:#f5c518; font-size:0.85rem; letter-spacing:2px;">N'MORE</span></span>
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle menu">☰</button>
+    </div>
+  </nav>
+
+<main class="menu-page">
+
+  <div class="menu-hero">
+    <h1>MUNCHIES N'MORE</h1>
+    <p>📍 414 McArthur Ave &nbsp;|&nbsp; 📞 613-425-6673 &nbsp;|&nbsp; Mon–Sat 11am–7pm</p>
+  </div>
+
+  <div class="container">
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-cat="all">🍽️ All</button>
+      <button class="filter-btn" data-cat="burgers">🍔 Burgers</button>
+      <button class="filter-btn" data-cat="poutine">🧀 Poutine</button>
+      <button class="filter-btn" data-cat="fries">🍟 Hand Cut</button>
+      <button class="filter-btn" data-cat="hotdogs">🌭 Hot Dogs</button>
+      <button class="filter-btn" data-cat="nmore">⭐ N'More</button>
+      <button class="filter-btn" data-cat="kids">👶 Kids</button>
+      <button class="filter-btn" data-cat="dessert">🍩 Desserts</button>
+      <button class="filter-btn" data-cat="drinks">🥤 Drinks</button>
+    </div>
+
+    <!-- BURGERS -->
+    <div class="menu-category" data-cat="burgers">
+      <div class="menu-cat-title">🍔 Burgers</div>
+      <img class="menu-section-img" src="Hamburger.jpg" alt="Burgers">
+      <div class="menu-grid">
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>The Classic Burger</h4>
+            <p>¼ lb burger, lettuce, tomato, onion</p>
+          </div>
+          <div class="menu-item-price">
+            $8.50
+            <span class="combo-label">COMBO</span>
+            <span class="combo-price">$13.50</span>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Cheese Burger</h4>
+            <p>¼ lb burger, lettuce, tomato, onion, and cheese</p>
+          </div>
+          <div class="menu-item-price">
+            $9.50
+            <span class="combo-label">COMBO</span>
+            <span class="combo-price">$14.50</span>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Bacon Cheese Burger</h4>
+            <p>¼ lb burger, lettuce, tomato, onion, bacon and cheese</p>
+          </div>
+          <div class="menu-item-price">
+            $10.50
+            <span class="combo-label">COMBO</span>
+            <span class="combo-price">$15.50</span>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Munchie's Burger</h4>
+            <p>Double ¼ burger, lettuce, tomato, cheese, sautéed onions and Munchie's sauce</p>
+          </div>
+          <div class="menu-item-price">
+            $12.50
+            <span class="combo-label">COMBO</span>
+            <span class="combo-price">$17.50</span>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Outrageous Burger</h4>
+            <p>¼ lb burger, egg, bacon, cheese, sautéed onion and spicy mayo</p>
+          </div>
+          <div class="menu-item-price">
+            $12.50
+            <span class="combo-label">COMBO</span>
+            <span class="combo-price">$17.50</span>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>BLT Sandwich</h4>
+            <p>Bacon, lettuce, tomato and mayo</p>
+          </div>
+          <div class="menu-item-price">
+            $9.75
+            <span class="combo-label">COMBO</span>
+            <span class="combo-price">$14.75</span>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Ve-Gone Burger <span class="badge-veg">VEG</span></h4>
+            <p>Beyond Meat, lettuce, tomato, onion and pickles</p>
+          </div>
+          <div class="menu-item-price">
+            $10.50
+            <span class="combo-label">COMBO</span>
+            <span class="combo-price">$15.50</span>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Chicken Fingers</h4>
+            <p>With plum, BBQ or spicy mayo sauce</p>
+          </div>
+          <div class="menu-item-price">
+            <span class="combo-label">4 Pcs</span>
+            $13.50
+            <span class="combo-label">COMBO</span>
+            <span class="combo-price">$18.50</span>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Crispy Chicken Burger</h4>
+            <p>Breaded chicken breast, lettuce, tomato and mayo</p>
+          </div>
+          <div class="menu-item-price">
+            $10.50
+            <span class="combo-label">COMBO</span>
+            <span class="combo-price">$15.50</span>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>MTL Smoked Meat</h4>
+            <p>MTL smoked meat on Rye bread, mustard and a pickle</p>
+          </div>
+          <div class="menu-item-price">
+            $12.00
+            <span class="combo-label">COMBO</span>
+            <span class="combo-price">$17.00</span>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Fish N Chips</h4>
+            <p>Codfish with tartar sauce</p>
+          </div>
+          <div class="menu-item-price">
+            <span class="combo-label">2 Pcs</span>
+            $17.50
+            <span class="combo-label">3 Pcs</span>
+            <span class="combo-price">$20.00</span>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Buffalo Chicken Wrap</h4>
+            <p>Chicken tenders tossed in hot sauce, lettuce, tomato, cheese and Munchie's sauce</p>
+          </div>
+          <div class="menu-item-price">
+            $11.75
+            <span class="combo-label">COMBO</span>
+            <span class="combo-price">$16.75</span>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Munchies Club Wrap</h4>
+            <p>Chicken tender, bacon, lettuce, tomato, Munchies sauce</p>
+          </div>
+          <div class="menu-item-price">
+            $12.75
+            <span class="combo-label">COMBO</span>
+            <span class="combo-price">$17.75</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="combo-note">
+        🍟 <strong>Combos include a small fry</strong> • Upgrade to a poutine for $2.50 • Add sautéed onions $1.50 • Add Cheese $1.50
+      </div>
+    </div>
+
+    <!-- POUTINE -->
+    <div class="menu-category" data-cat="poutine">
+      <div class="menu-cat-title">🧀 Poutine</div>
+      <img class="menu-section-img" src="Poutine.jpg" alt="Poutine">
+      <div class="size-grid">
+
+        <div class="size-item">
+          <h4>Classic</h4>
+          <p>St-Albert cheese curds</p>
+          <div class="size-prices">
+            <span><span class="label">SMALL</span><span class="val">$7.50</span></span>
+            <span><span class="label">MEDIUM</span><span class="val">$9.00</span></span>
+            <span><span class="label">LARGE</span><span class="val">$11.00</span></span>
+          </div>
+        </div>
+
+        <div class="size-item">
+          <h4>Smoked Meat</h4>
+          <p>St-Albert cheese curds and MTL smoked meat</p>
+          <div class="size-prices">
+            <span><span class="label">MEDIUM</span><span class="val">$14.75</span></span>
+            <span><span class="label">LARGE</span><span class="val">$17.75</span></span>
+          </div>
+        </div>
+
+        <div class="size-item">
+          <h4>Hot Dog</h4>
+          <p>St-Albert cheese curds and hot dog</p>
+          <div class="size-prices">
+            <span><span class="label">MEDIUM</span><span class="val">$14.75</span></span>
+            <span><span class="label">LARGE</span><span class="val">$17.75</span></span>
+          </div>
+        </div>
+
+        <div class="size-item">
+          <h4>Cheese Burger</h4>
+          <p>St-Albert cheese curds, burger and sautéed onions</p>
+          <div class="size-prices">
+            <span><span class="label">MEDIUM</span><span class="val">$15.75</span></span>
+            <span><span class="label">LARGE</span><span class="val">$18.75</span></span>
+          </div>
+        </div>
+
+        <div class="size-item">
+          <h4>The Big Club</h4>
+          <p>St-Albert cheese curds, chicken tenders, bacon and gravy</p>
+          <div class="size-prices">
+            <span><span class="label">MEDIUM</span><span class="val">$15.75</span></span>
+            <span><span class="label">LARGE</span><span class="val">$18.75</span></span>
+          </div>
+        </div>
+
+        <div class="size-item">
+          <h4>Baconizer</h4>
+          <p>St-Albert cheese curds, bacon, sautéed onion</p>
+          <div class="size-prices">
+            <span><span class="label">MEDIUM</span><span class="val">$14.75</span></span>
+            <span><span class="label">LARGE</span><span class="val">$17.75</span></span>
+          </div>
+        </div>
+
+        <div class="size-item">
+          <h4>Curly Fries Poutine</h4>
+          <p>St-Albert cheese curds and gravy</p>
+          <div class="size-prices">
+            <span><span class="label">MEDIUM</span><span class="val">$12.50</span></span>
+            <span><span class="label">LARGE</span><span class="val">$16.75</span></span>
+          </div>
+        </div>
+
+      </div>
+      <div class="extras-note">
+        ➕ <strong>Extras:</strong> Extra Cheese $3 &nbsp;|&nbsp; Extra Meat $4 &nbsp;|&nbsp; Extra Gravy $2 &nbsp;|&nbsp; Sautéed Onions $1.50
+      </div>
+    </div>
+
+    <!-- HAND CUT FRIES -->
+    <div class="menu-category" data-cat="fries">
+      <div class="menu-cat-title">🍟 Hand Cut</div>
+      <img class="menu-section-img" src="Fries.jpg" alt="Hand Cut Fries">
+      <div class="size-grid">
+
+        <div class="size-item">
+          <h4>Fries</h4>
+          <div class="size-prices">
+            <span><span class="label">SMALL</span><span class="val">$5.50</span></span>
+            <span><span class="label">MEDIUM</span><span class="val">$6.50</span></span>
+            <span><span class="label">LARGE</span><span class="val">$8.00</span></span>
+          </div>
+        </div>
+
+        <div class="size-item">
+          <h4>Holland Fries</h4>
+          <p>With a blob of mayo</p>
+          <div class="size-prices">
+            <span><span class="label">MEDIUM</span><span class="val">$8.00</span></span>
+            <span><span class="label">LARGE</span><span class="val">$10.00</span></span>
+          </div>
+        </div>
+
+        <div class="size-item">
+          <h4>Garlic Fries</h4>
+          <p>Tossed in homemade garlic butter</p>
+          <div class="size-prices">
+            <span><span class="label">MEDIUM</span><span class="val">$8.00</span></span>
+            <span><span class="label">LARGE</span><span class="val">$10.00</span></span>
+          </div>
+        </div>
+
+        <div class="size-item">
+          <h4>Curly Fries</h4>
+          <div class="size-prices">
+            <span><span class="label">MEDIUM</span><span class="val">$8.00</span></span>
+            <span><span class="label">LARGE</span><span class="val">$10.00</span></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- HOT DOGS -->
+    <div class="menu-category" data-cat="hotdogs">
+      <div class="menu-cat-title">🌭 Hot Dogs</div>
+      <img class="menu-section-img" src="Hotdogs.jpg" alt="Hot Dogs">
+      <div class="menu-grid">
+
+        <div class="menu-item">
+          <div class="menu-item-info"><h4>Jumbo Dog</h4></div>
+          <div class="menu-item-price">$5.00</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info"><h4>Hot Dog</h4></div>
+          <div class="menu-item-price">$4.00</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Whistle Dog</h4>
+            <p>With cheese and bacon</p>
+          </div>
+          <div class="menu-item-price">$7.50</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Curd Dog</h4>
+            <p>With St-Albert cheese and honey mustard</p>
+          </div>
+          <div class="menu-item-price">$6.50</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info"><h4>Not a Corndog</h4></div>
+          <div class="menu-item-price">$5.50</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info"><h4>Pogo</h4></div>
+          <div class="menu-item-price">$4.00</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info"><h4>Sausage</h4></div>
+          <div class="menu-item-price">$8.50</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- N'MORE -->
+    <div class="menu-category" data-cat="nmore">
+      <div class="menu-cat-title">⭐ N'More</div>
+      <img class="menu-section-img" src="friedpickles.jpg" alt="N'More">
+      <div class="menu-grid">
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Zucchini Sticks</h4>
+            <p>12 pcs</p>
+          </div>
+          <div class="menu-item-price">$12.50</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Deep Fried Pickles</h4>
+            <p>6 pcs</p>
+          </div>
+          <div class="menu-item-price">$12.50</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Jalapeño Poppers</h4>
+            <p>6 pcs</p>
+          </div>
+          <div class="menu-item-price">$12.50</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Cheese Sticks</h4>
+            <p>10 pcs</p>
+          </div>
+          <div class="menu-item-price">$12.50</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info"><h4>Onion Rings</h4></div>
+          <div class="menu-item-price">
+            <span class="combo-label">Small</span>$7.50
+            <span class="combo-label">Large</span>
+            <span class="combo-price">$10.00</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- KIDS -->
+    <div class="menu-category" data-cat="kids">
+      <div class="menu-cat-title">👶 Kids Menu</div>
+      <img class="menu-section-img" src="kidsmeal.jpg" alt="Kids Menu">
+      <div class="menu-grid">
+
+        <div class="menu-item">
+          <div class="menu-item-info"><h4>Hot Dog Platter</h4></div>
+          <div class="menu-item-price">$8.50</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Chicken Fingers Platter</h4>
+            <p>2 pcs</p>
+          </div>
+          <div class="menu-item-price">$9.50</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="menu-category" data-cat="dessert">
+      <div class="menu-cat-title">🍩 Desserts</div>
+      <img class="menu-section-img" src="friedoreos.jpg" alt="Desserts">
+      <div class="menu-grid">
+
+        <div class="menu-item">
+          <div class="menu-item-info"><h4>Nanaimo Bar</h4></div>
+          <div class="menu-item-price">$3.00</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Deep Fried Oreos</h4>
+            <p>4 pcs</p>
+          </div>
+          <div class="menu-item-price">$5.00</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DRINKS -->
+    <div class="menu-category" data-cat="drinks">
+      <div class="menu-cat-title">🥤 Drinks</div>
+      <img class="menu-section-img" src="https://th.bing.com/th/id/OIP.93ByFRPNFuhTTcrtooIw3AHaEK?w=1080&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Drinks" onerror="this.style.display='none'">
+      <div class="menu-grid">
+
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Pop</h4>
+            <p>Pepsi, Diet Pepsi, Ginger Ale and 7up</p>
+          </div>
+          <div class="menu-item-price">$1.75</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info"><h4>Soda Water</h4></div>
+          <div class="menu-item-price">$1.75</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info"><h4>Water</h4></div>
+          <div class="menu-item-price">$1.50</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-info"><h4>Orange or Apple Juice</h4></div>
+          <div class="menu-item-price">$2.25</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tax-note">🇨🇦 13% HST Tax Included on All Orders</div>
+
+    <p style="text-align:center; font-size: 0.85rem; color: #888; margin-top: 1.5rem;">
+      ⚠️ Allergen info available on request. Call us at <strong>613-425-6673</strong> before ordering if you have dietary restrictions.
+    </p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo">
+        <img src="https://scontent-yyz1-1.xx.fbcdn.net/v/t39.30808-6/224607607_108662754843283_6356012356001936074_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=utRl8--XpD4Q7kNvwF0H474&_nc_oc=Adrr51OPSTjb4a1eCCOS1hjnYd8Ft-JaPYgh7UfqGRvW7ALfFsPYzkct6wA8mWlSCJM&_nc_zt=23&_nc_ht=scontent-yyz1-1.xx&_nc_gid=I9XsU6w-t4xVCJtu1SG1Ow&_nc_ss=7b2a8&oh=00_Af27Eh2ZL6cRy-Em3QiBVd-zZ75hFidklIJXATUf0zsYkg&oe=69F93029" alt="Munchies N'More Logo" style="height:48px; width:48px; border-radius:50%; object-fit:cover; border:2px solid #f5c518; margin-bottom:6px;">
+        <span style="font-family: Arial Black, Arial, sans-serif; font-weight:900; font-size:1rem; color:white; display:block;">MUNCHIES <span style="color:#f5c518;">N'MORE</span></span>
+        <p><small>Food truck vibes, brick &amp; mortar taste</small></p>
+      </div>
+      <div>
+        <strong>Menu • Reviews • Contact</strong>
+        <p>© 2026 Munchies N'More • Ottawa, ON</p>
+      </div>
+      <div>
+        <p><strong>Phone:</strong> <a href="tel:6134256673">(613) 425-6673</a></p>
+        <p><strong>Address:</strong> 414 McArthur Ave, Ottawa ON K1K 1G5</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="scrollTop" aria-label="Back to top">↑</button>
+
+<script>
+  document.querySelector('.hamburger').addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('show');
+  });
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('.menu-category').forEach(section => {
+        section.style.display = (cat === 'all' || section.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+
+  const scrollBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>
